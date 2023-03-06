@@ -21,10 +21,22 @@ namespace BerlinClock
 
         public string GetFiveMinutes()
         {
-            var numMinutes = _date.Minute / 5;
-            return $"{string.Concat(Enumerable.Repeat("YYR", numMinutes / 3))}" +
-                   $"{new String('Y', numMinutes % 3)}" +
-                   $"{new String('O', 11 - numMinutes)}";
+            var numFiveMinuteBlocks = _date.Minute / 5;
+            return $"{string.Concat(Enumerable.Repeat("YYR", numFiveMinuteBlocks / 3))}" +
+                   $"{new String('Y', numFiveMinuteBlocks % 3)}" +
+                   $"{new String('O', 11 - numFiveMinuteBlocks)}";
+        }
+
+        public string GetSingleHours()
+        {
+            var numSingleHourBlocks = _date.Hour % 5;
+            return $"{new String('R', numSingleHourBlocks)}{new String('O', 4 - numSingleHourBlocks)}";
+        }
+
+        public string GetFiveHourBlocks()
+        {
+            var numFiveHourBlocks = _date.Hour / 5;
+            return $"{new String('R', numFiveHourBlocks)}{new String('O', 4 - numFiveHourBlocks)}";
         }
     }
 }

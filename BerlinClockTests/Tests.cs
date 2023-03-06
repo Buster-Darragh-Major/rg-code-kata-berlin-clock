@@ -11,7 +11,7 @@ namespace BerlinClockTests
         [TestCase("01/01/2000 12:32:00", "YYOO")]
         [TestCase("01/01/2000 12:34:00", "YYYY")]
         [TestCase("01/01/2000 12:35:00", "OOOO")]
-        public void SingleMinutesRow(string dateTime, string expected)
+        public void ParseToSingleMinutesRow(string dateTime, string expected)
         {
             var berlinClock = new BerlinClock.BerlinClock(DateTime.Parse(dateTime));
             Assert.AreEqual(expected, berlinClock.GetSingleMinutes());
@@ -22,10 +22,32 @@ namespace BerlinClockTests
         [TestCase("01/01/2000 12:04:00", "OOOOOOOOOOO")]
         [TestCase("01/01/2000 12:23:00", "YYRYOOOOOOO")]
         [TestCase("01/01/2000 12:35:00", "YYRYYRYOOOO")]
-        public void FiveMinutes(string dateTime, string expected)
+        public void ParseToFiveMinutes(string dateTime, string expected)
         {
             var berlinClock = new BerlinClock.BerlinClock(DateTime.Parse(dateTime));
             Assert.AreEqual(expected, berlinClock.GetFiveMinutes());
         }
+
+        [TestCase("01/01/2000 00:00:00", "OOOO")]
+        [TestCase("01/01/2000 23:59:59", "RRRO")]
+        [TestCase("01/01/2000 02:04:00", "RROO")]
+        [TestCase("01/01/2000 08:23:00", "RRRO")]
+        [TestCase("01/01/2000 14:35:00", "RRRR")]
+        public void ParseToSingleHoursRow(string dateTime, string expected)
+        {
+            var berlinClock = new BerlinClock.BerlinClock(DateTime.Parse(dateTime));
+            Assert.AreEqual(expected, berlinClock.GetSingleHours());
+        } 
+        
+        [TestCase("01/01/2000 00:00:00", "OOOO")]
+        [TestCase("01/01/2000 23:59:59", "RRRR")]
+        [TestCase("01/01/2000 02:04:00", "OOOO")]
+        [TestCase("01/01/2000 08:23:00", "ROOO")]
+        [TestCase("01/01/2000 16:35:00", "RRRO")]
+        public void ParseToFiveHoursRow(string dateTime, string expected)
+        {
+            var berlinClock = new BerlinClock.BerlinClock(DateTime.Parse(dateTime));
+            Assert.AreEqual(expected, berlinClock.GetFiveHourBlocks());
+        } 
     }
 }
