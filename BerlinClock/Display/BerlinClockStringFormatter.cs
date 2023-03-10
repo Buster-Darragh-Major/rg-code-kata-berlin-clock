@@ -1,16 +1,39 @@
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BerlinClock.Display
 {
     public class BerlinClockStringFormatter: IBerlinClockStringFormatter
     {
+        private const char Yellow = 'Y';
+        private const char Red = 'R';
+        private const char Off = 'O';
+        
         public string Format(BerlinClockState state)
         {
-            return $"{string.Concat(state.SecondLamps.Select(lamp => lamp == LampPower.ON ? 'Y' : 'O'))}\n"
-                + $"{string.Concat(state.FiveHourLamps.Select(lamp => lamp == LampPower.ON ? 'R' : 'O'))}\n"
-                + $"{string.Concat(state.HourLamps.Select(lamp => lamp == LampPower.ON ? 'R' : 'O'))}\n"
-                + $"{string.Concat(state.FiveMinuteLamps.Select(lamp => lamp == LampPower.ON ? 'Y' : 'O'))}\n"
-                + $"{string.Concat(state.MinuteLamps.Select(lamp => lamp == LampPower.ON ? 'Y' : 'O'))}";
+            return $"{RenderPatternRow(state.SecondLamps, Yellow.ToString())}\n"
+                + $"{RenderPatternRow(state.FiveHourLamps, Red.ToString())}\n"
+                + $"{RenderPatternRow(state.HourLamps, Red.ToString())}\n"
+                + $"{RenderPatternRow(state.FiveMinuteLamps, new string(new [] {Yellow, Yellow, Red}))}\n"
+                + $"{RenderPatternRow(state.MinuteLamps, Yellow.ToString())}";
+        }
+
+        private string RenderPatternRow(IEnumerable<LampPower> lamps, string pattern)
+        {
+            var patternIterator = pattern.ToCharArray().GetEnumerator();
+            patternIterator.MoveNext();
+
+            return string.Concat(lamps.Select(lamp =>
+            {
+                var current = patternIterator.Current;
+                if (patternIterator.MoveNext())
+                {
+                    patternIterator.Reset();
+                    patternIterator.MoveNext();
+                }
+
+                return lamp == LampPower.ON ? current : Off;
+            }));
         }
     }
 }
