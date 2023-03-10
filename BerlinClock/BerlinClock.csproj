@@ -40,7 +40,7 @@
     <ItemGroup>
         <Compile Include="BerlinClock.cs" />
         <Compile Include="BerlinClockRules.cs" />
-        <Compile Include="ClockFormatEnum.cs" />
+        <Compile Include="LampPower.cs" />
         <Compile Include="IBerlinClockRules.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

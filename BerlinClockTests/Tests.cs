@@ -61,20 +61,17 @@ namespace BerlinClockTests
             Assert.AreEqual(ParseExpected(expected), berlinClock.GetSecondsLight(DateTime.Parse(dateTime)));
         }
 
-        private IEnumerable<ClockFormatEnum> ParseExpected(string expected)
+        private IEnumerable<LampPower> ParseExpected(string expected)
         {
             return expected.ToList().ConvertAll(@char =>
             {
                 switch (@char)
                 {
                     case 'Y':
-                        return ClockFormatEnum.Yellow;
                     case 'R':
-                        return ClockFormatEnum.Red;
-                    case 'O':
-                        return ClockFormatEnum.Off;
+                        return LampPower.ON;
                     default:
-                        return ClockFormatEnum.Off;
+                        return LampPower.OFF;
                 }
             });
         }

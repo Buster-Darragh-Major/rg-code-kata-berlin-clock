@@ -5,10 +5,10 @@ namespace BerlinClock
 {
     public interface IBerlinClockRules
     {
-        IEnumerable<ClockFormatEnum> GetSingleMinutes(DateTime date);
-        IEnumerable<ClockFormatEnum> GetFiveMinutes(DateTime date);
-        IEnumerable<ClockFormatEnum> GetSingleHours(DateTime date);
-        IEnumerable<ClockFormatEnum> GetFiveHourBlocks(DateTime date);
-        IEnumerable<ClockFormatEnum> GetSecondsLight(DateTime date);
+        IEnumerable<LampPower> GetSingleMinutes(DateTime date);
+        IEnumerable<LampPower> GetFiveMinutes(DateTime date);
+        IEnumerable<LampPower> GetSingleHours(DateTime date);
+        IEnumerable<LampPower> GetFiveHourBlocks(DateTime date);
+        IEnumerable<LampPower> GetSecondsLight(DateTime date);
     }
 }

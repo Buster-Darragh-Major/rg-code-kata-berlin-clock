@@ -6,40 +6,46 @@ namespace BerlinClock
 {
     public class BerlinClockRules : IBerlinClockRules
     {
+        private const int SecondsLampLength = 1;
+        private const int MinutesLampLength = 4;
+        private const int FiveMinutesLampLength = 11;
+        private const int HoursLampLength = 4;
+        private const int FiveHoursLampLength = 4;
 
-        public IEnumerable<ClockFormatEnum> GetSingleMinutes(DateTime date)
+        public IEnumerable<LampPower> GetSingleMinutes(DateTime date)
         {
             var numMinutes = date.Minute % 5;
-            return Enumerable.Repeat(ClockFormatEnum.Yellow, numMinutes)
-                .Concat(Enumerable.Repeat(ClockFormatEnum.Off, 4 - numMinutes));
+            return GenerateLampsByLength(numMinutes, MinutesLampLength);
         }
 
-        public IEnumerable<ClockFormatEnum> GetFiveMinutes(DateTime date)
+        public IEnumerable<LampPower> GetFiveMinutes(DateTime date)
         {
             var numFiveMinuteBlocks = date.Minute / 5;
-            return new[] { ClockFormatEnum.Yellow };
-            // return $"{string.Concat(Enumerable.Repeat("YYR", numFiveMinuteBlocks / 3))}" +
-            //        $"{new String('Y', numFiveMinuteBlocks % 3)}" +
-            //        $"{new String('O', 11 - numFiveMinuteBlocks)}";
+            return GenerateLampsByLength(numFiveMinuteBlocks, FiveMinutesLampLength);
         }
 
-        public IEnumerable<ClockFormatEnum> GetSingleHours(DateTime date)
+        public IEnumerable<LampPower> GetSingleHours(DateTime date)
         {
             var numSingleHourBlocks = date.Hour % 5;
-            return Enumerable.Repeat(ClockFormatEnum.Red, numSingleHourBlocks)
-                .Concat(Enumerable.Repeat(ClockFormatEnum.Off, 4 - numSingleHourBlocks));
+            return GenerateLampsByLength(numSingleHourBlocks, HoursLampLength);
         }
 
-        public IEnumerable<ClockFormatEnum> GetFiveHourBlocks(DateTime date)
+        public IEnumerable<LampPower> GetFiveHourBlocks(DateTime date)
         {
             var numFiveHourBlocks = date.Hour / 5;
-            return Enumerable.Repeat(ClockFormatEnum.Red, numFiveHourBlocks)
-                .Concat(Enumerable.Repeat(ClockFormatEnum.Off, 4 - numFiveHourBlocks));
+            return GenerateLampsByLength(numFiveHourBlocks, FiveHoursLampLength);
         }
 
-        public IEnumerable<ClockFormatEnum> GetSecondsLight(DateTime date)
+        public IEnumerable<LampPower> GetSecondsLight(DateTime date)
         {
-            return Enumerable.Repeat(date.Second % 2 == 0 ? ClockFormatEnum.Yellow : ClockFormatEnum.Off, 1);
+            var secondsRemainder = date.Second % 2;
+            return GenerateLampsByLength(secondsRemainder == 1 ? 0 : 1, SecondsLampLength);
+        }
+
+        private IEnumerable<LampPower> GenerateLampsByLength(int lampsOn, int lampsLength)
+        {
+            return Enumerable.Repeat(LampPower.ON, lampsOn)
+                .Concat(Enumerable.Repeat(LampPower.OFF, lampsLength - lampsOn));
         }
     }
 }
