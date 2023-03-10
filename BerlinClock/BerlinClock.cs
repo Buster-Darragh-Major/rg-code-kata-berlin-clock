@@ -17,15 +17,15 @@ namespace BerlinClock
         {
             var time = _time;
             return
-                $"{_rules.GetSecondsLight(time)}{_rules.GetFiveHourBlocks(time)}{_rules.GetSingleHours(time)}" +
-                $"{_rules.GetFiveMinutes(time)}{_rules.GetSingleMinutes(time)}";
+                $"{_rules.GetSecondLamps(time)}{_rules.GetFiveHourBlockLamps(time)}{_rules.GetSingleHourLamps(time)}" +
+                $"{_rules.GetFiveMinuteLamps(time)}{_rules.GetSingleMinuteLamps(time)}";
         }
         public string DisplayReadableTime()
         {
             var time = _time;
             return
-                $"{_rules.GetSecondsLight(time)}\n{_rules.GetFiveHourBlocks(time)}\n{_rules.GetSingleHours(time)}\n" +
-                $"{_rules.GetFiveMinutes(time)}\n{_rules.GetSingleMinutes(time)}";
+                $"{_rules.GetSecondLamps(time)}\n{_rules.GetFiveHourBlockLamps(time)}\n{_rules.GetSingleHourLamps(time)}\n" +
+                $"{_rules.GetFiveMinuteLamps(time)}\n{_rules.GetSingleMinuteLamps(time)}";
         }
     }
 }
