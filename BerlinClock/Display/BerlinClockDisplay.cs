@@ -4,16 +4,16 @@ namespace BerlinClock.Display
 {
     public class BerlinClockDisplay : IBerlinClockDisplay
     {
-        private readonly IBerlinClockFormatter _berlinClockFormatter;
+        private readonly IBerlinClockStringFormatter _berlinClockStringFormatter;
 
-        public BerlinClockDisplay(IBerlinClockFormatter berlinClockFormatter)
+        public BerlinClockDisplay(IBerlinClockStringFormatter berlinClockStringFormatter)
         {
-            _berlinClockFormatter = berlinClockFormatter;
+            _berlinClockStringFormatter = berlinClockStringFormatter;
         }
         
         public void Display(BerlinClockState berlinClockState)
         {
-            Console.Write(_berlinClockFormatter.Format(berlinClockState));
+            Console.Write(_berlinClockStringFormatter.Format(berlinClockState));
         }
     }
 }

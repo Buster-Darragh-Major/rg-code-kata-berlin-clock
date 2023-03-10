@@ -42,7 +42,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Display\BerlinClockFormatterTests.cs" />
+        <Compile Include="Display\BerlinClockStringFormatterTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Rules\BerlinClockRulesTests.cs" />
     </ItemGroup>

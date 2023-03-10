@@ -41,9 +41,9 @@
         <Compile Include="BerlinClock.cs" />
         <Compile Include="BerlinClockState.cs" />
         <Compile Include="Display\BerlinClockDisplay.cs" />
-        <Compile Include="Display\BerlinClockFormatter.cs" />
+        <Compile Include="Display\BerlinClockStringFormatter.cs" />
         <Compile Include="Display\IBerlinClockDisplay.cs" />
-        <Compile Include="Display\IBerlinClockFormatter.cs" />
+        <Compile Include="Display\IBerlinClockStringFormatter.cs" />
         <Compile Include="LampPower.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Rules\BerlinClockRules.cs" />

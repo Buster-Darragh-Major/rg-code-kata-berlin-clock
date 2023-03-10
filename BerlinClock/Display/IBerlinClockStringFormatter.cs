@@ -1,6 +1,6 @@
 namespace BerlinClock.Display
 {
-    public interface IBerlinClockFormatter
+    public interface IBerlinClockStringFormatter
     {
         string Format(BerlinClockState state);
     }
