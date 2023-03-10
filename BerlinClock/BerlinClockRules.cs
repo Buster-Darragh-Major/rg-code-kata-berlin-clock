@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace BerlinClock
 {
-    public class BerlinClockRules
+    public class BerlinClockRules : IBerlinClockRules
     {
 
         public string GetSingleMinutes(DateTime date)

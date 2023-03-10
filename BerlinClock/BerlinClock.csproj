@@ -38,7 +38,9 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="BerlinClock.cs" />
         <Compile Include="BerlinClockRules.cs" />
+        <Compile Include="IBerlinClockRules.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
