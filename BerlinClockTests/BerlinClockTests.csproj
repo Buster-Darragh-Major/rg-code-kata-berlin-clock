@@ -42,8 +42,9 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="BerlinClockRulesTests.cs" />
+        <Compile Include="Display\BerlinClockFormatterTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Rules\BerlinClockRulesTests.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\BerlinClock\BerlinClock.csproj">

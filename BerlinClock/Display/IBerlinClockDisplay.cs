@@ -1,4 +1,4 @@
-namespace BerlinClock
+namespace BerlinClock.Display
 {
     public interface IBerlinClockDisplay
     {

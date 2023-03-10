@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using BerlinClock;
+using BerlinClock.Rules;
 using NUnit.Framework;
 
-namespace BerlinClockTests
+namespace BerlinClockTests.Rules
 {
     [TestFixture]
     public class BerlinCLockRulesTests

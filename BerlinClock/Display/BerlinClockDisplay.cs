@@ -1,10 +1,19 @@
-namespace BerlinClock
+using System;
+
+namespace BerlinClock.Display
 {
     public class BerlinClockDisplay : IBerlinClockDisplay
     {
+        private readonly IBerlinClockFormatter _berlinClockFormatter;
+
+        public BerlinClockDisplay(IBerlinClockFormatter berlinClockFormatter)
+        {
+            _berlinClockFormatter = berlinClockFormatter;
+        }
+        
         public void Display(BerlinClockState berlinClockState)
         {
-            throw new System.NotImplementedException();
+            Console.Write(_berlinClockFormatter.Format(berlinClockState));
         }
     }
 }

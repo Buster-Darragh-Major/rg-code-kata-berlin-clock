@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BerlinClock
+namespace BerlinClock.Rules
 {
     public class BerlinClockRules : IBerlinClockRules
     {

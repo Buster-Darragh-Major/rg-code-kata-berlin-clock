@@ -1,16 +1,25 @@
 using System;
+using BerlinClock.Display;
+using BerlinClock.Rules;
 
 namespace BerlinClock
 {
     public class BerlinClock
     {
-        private readonly IBerlinClockRules _rules;
         private readonly DateTime _time;
+        private readonly IBerlinClockRules _rules;
+        private readonly IBerlinClockDisplay _display;
 
-        public BerlinClock(IBerlinClockRules rules, DateTime startTime)
+        public BerlinClock(DateTime startTime, IBerlinClockRules rules, IBerlinClockDisplay display)
         {
-            _rules = rules;
             _time = startTime;
+            _rules = rules;
+            _display = display;
+        }
+
+        public void Start()
+        {
+            
         }
     }
 }

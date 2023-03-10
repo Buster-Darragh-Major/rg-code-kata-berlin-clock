@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BerlinClock
+namespace BerlinClock.Rules
 {
     public interface IBerlinClockRules
     {
