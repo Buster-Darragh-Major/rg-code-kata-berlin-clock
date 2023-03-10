@@ -13,8 +13,8 @@ namespace BerlinClockTests
         [TestCase("01/01/2000 12:35:00", "OOOO")]
         public void ParseToSingleMinutesRow(string dateTime, string expected)
         {
-            var berlinClock = new BerlinClock.BerlinClock(DateTime.Parse(dateTime));
-            Assert.AreEqual(expected, berlinClock.GetSingleMinutes());
+            var berlinClock = new BerlinClock.BerlinClockRules();
+            Assert.AreEqual(expected, berlinClock.GetSingleMinutes(DateTime.Parse(dateTime)));
         }
 
         [TestCase("01/01/2000 00:00:00", "OOOOOOOOOOO")]
@@ -24,8 +24,8 @@ namespace BerlinClockTests
         [TestCase("01/01/2000 12:35:00", "YYRYYRYOOOO")]
         public void ParseToFiveMinutes(string dateTime, string expected)
         {
-            var berlinClock = new BerlinClock.BerlinClock(DateTime.Parse(dateTime));
-            Assert.AreEqual(expected, berlinClock.GetFiveMinutes());
+            var berlinClock = new BerlinClock.BerlinClockRules();
+            Assert.AreEqual(expected, berlinClock.GetFiveMinutes(DateTime.Parse(dateTime)));
         }
 
         [TestCase("01/01/2000 00:00:00", "OOOO")]
@@ -35,8 +35,8 @@ namespace BerlinClockTests
         [TestCase("01/01/2000 14:35:00", "RRRR")]
         public void ParseToSingleHoursRow(string dateTime, string expected)
         {
-            var berlinClock = new BerlinClock.BerlinClock(DateTime.Parse(dateTime));
-            Assert.AreEqual(expected, berlinClock.GetSingleHours());
+            var berlinClock = new BerlinClock.BerlinClockRules();
+            Assert.AreEqual(expected, berlinClock.GetSingleHours(DateTime.Parse(dateTime)));
         } 
         
         [TestCase("01/01/2000 00:00:00", "OOOO")]
@@ -46,8 +46,16 @@ namespace BerlinClockTests
         [TestCase("01/01/2000 16:35:00", "RRRO")]
         public void ParseToFiveHoursRow(string dateTime, string expected)
         {
-            var berlinClock = new BerlinClock.BerlinClock(DateTime.Parse(dateTime));
-            Assert.AreEqual(expected, berlinClock.GetFiveHourBlocks());
-        } 
+            var berlinClock = new BerlinClock.BerlinClockRules();
+            Assert.AreEqual(expected, berlinClock.GetFiveHourBlocks(DateTime.Parse(dateTime)));
+        }
+
+        [TestCase("01/01/2000 00:00:00", "Y")]
+        [TestCase("01/01/2000 23:59:59", "O")]
+        public void ParseToSecondsLight(string dateTime, string expected)
+        {
+            var berlinClock = new BerlinClock.BerlinClockRules();
+            Assert.AreEqual(expected, berlinClock.GetSecondsLight(DateTime.Parse(dateTime)));
+        }
     }
 }

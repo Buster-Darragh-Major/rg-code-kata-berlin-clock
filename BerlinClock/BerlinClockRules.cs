@@ -1,42 +1,40 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
 
 namespace BerlinClock
 {
-    public class BerlinClock
+    public class BerlinClockRules
     {
-        private readonly DateTime _date;
 
-        public BerlinClock(DateTime date)
+        public string GetSingleMinutes(DateTime date)
         {
-            _date = date;
-        }
-
-        public string GetSingleMinutes()
-        {
-            var numMinutes = _date.Minute % 5;
+            var numMinutes = date.Minute % 5;
             return $"{new String('Y', numMinutes)}{new String('O', 4 - numMinutes)}";
         }
 
-        public string GetFiveMinutes()
+        public string GetFiveMinutes(DateTime date)
         {
-            var numFiveMinuteBlocks = _date.Minute / 5;
+            var numFiveMinuteBlocks = date.Minute / 5;
             return $"{string.Concat(Enumerable.Repeat("YYR", numFiveMinuteBlocks / 3))}" +
                    $"{new String('Y', numFiveMinuteBlocks % 3)}" +
                    $"{new String('O', 11 - numFiveMinuteBlocks)}";
         }
 
-        public string GetSingleHours()
+        public string GetSingleHours(DateTime date)
         {
-            var numSingleHourBlocks = _date.Hour % 5;
+            var numSingleHourBlocks = date.Hour % 5;
             return $"{new String('R', numSingleHourBlocks)}{new String('O', 4 - numSingleHourBlocks)}";
         }
 
-        public string GetFiveHourBlocks()
+        public string GetFiveHourBlocks(DateTime date)
         {
-            var numFiveHourBlocks = _date.Hour / 5;
+            var numFiveHourBlocks = date.Hour / 5;
             return $"{new String('R', numFiveHourBlocks)}{new String('O', 4 - numFiveHourBlocks)}";
+        }
+
+        public string GetSecondsLight(DateTime date)
+        {
+            return (date.Second % 2 == 0) ? "Y" : "O";
         }
     }
 }
