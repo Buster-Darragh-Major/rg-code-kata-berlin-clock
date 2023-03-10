@@ -39,10 +39,13 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="BerlinClock.cs" />
-        <Compile Include="BerlinClockRules.cs" />
+        <Compile Include="BerlinClockState.cs" />
+        <Compile Include="Display\BerlinClockDisplay.cs" />
+        <Compile Include="Display\IBerlinClockDisplay.cs" />
         <Compile Include="LampPower.cs" />
-        <Compile Include="IBerlinClockRules.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Rules\BerlinClockRules.cs" />
+        <Compile Include="Rules\IBerlinClockRules.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
