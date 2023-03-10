@@ -38,7 +38,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="BerlinClock.cs" />
+        <Compile Include="TickingBerlinClock.cs" />
         <Compile Include="BerlinClockState.cs" />
         <Compile Include="Display\BerlinClockDisplay.cs" />
         <Compile Include="Display\BerlinClockStringFormatter.cs" />

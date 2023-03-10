@@ -18,7 +18,7 @@ namespace BerlinClockTests.Rules
         public void ParseToSingleMinutesRow(string dateTime, string expected)
         {
             var berlinClock = new BerlinClockRules();
-            Assert.AreEqual(ParseExpected(expected), berlinClock.GetSingleMinuteLamps(DateTime.Parse(dateTime)));
+            Assert.AreEqual(ParseExpected(expected), berlinClock.GetMinuteLamps(DateTime.Parse(dateTime)));
         }
 
         [TestCase("01/01/2000 00:00:00", "OOOOOOOOOOO")]
@@ -40,7 +40,7 @@ namespace BerlinClockTests.Rules
         public void ParseToSingleHoursRow(string dateTime, string expected)
         {
             var berlinClock = new BerlinClockRules();
-            Assert.AreEqual(ParseExpected(expected), berlinClock.GetSingleHourLamps(DateTime.Parse(dateTime)));
+            Assert.AreEqual(ParseExpected(expected), berlinClock.GetHourLamps(DateTime.Parse(dateTime)));
         } 
         
         [TestCase("01/01/2000 00:00:00", "OOOO")]

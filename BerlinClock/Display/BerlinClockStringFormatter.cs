@@ -26,7 +26,7 @@ namespace BerlinClock.Display
             return string.Concat(lamps.Select(lamp =>
             {
                 var current = patternIterator.Current;
-                if (patternIterator.MoveNext())
+                if (!patternIterator.MoveNext())
                 {
                     patternIterator.Reset();
                     patternIterator.MoveNext();

@@ -13,6 +13,7 @@ namespace BerlinClock.Display
         
         public void Display(BerlinClockState berlinClockState)
         {
+            Console.Clear();
             Console.Write(_berlinClockStringFormatter.Format(berlinClockState));
         }
     }

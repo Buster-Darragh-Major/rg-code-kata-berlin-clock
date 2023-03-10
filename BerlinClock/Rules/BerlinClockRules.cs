@@ -12,7 +12,7 @@ namespace BerlinClock.Rules
         private const int HoursLampLength = 4;
         private const int FiveHoursLampLength = 4;
 
-        public IEnumerable<LampPower> GetSingleMinuteLamps(DateTime date)
+        public IEnumerable<LampPower> GetMinuteLamps(DateTime date)
         {
             var numMinutes = date.Minute % 5;
             return GenerateLampsByLength(numMinutes, MinutesLampLength);
@@ -24,7 +24,7 @@ namespace BerlinClock.Rules
             return GenerateLampsByLength(numFiveMinuteBlocks, FiveMinutesLampLength);
         }
 
-        public IEnumerable<LampPower> GetSingleHourLamps(DateTime date)
+        public IEnumerable<LampPower> GetHourLamps(DateTime date)
         {
             var numSingleHourBlocks = date.Hour % 5;
             return GenerateLampsByLength(numSingleHourBlocks, HoursLampLength);
