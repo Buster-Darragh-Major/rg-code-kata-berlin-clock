@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BerlinClock;
 using NUnit.Framework;
 
@@ -7,6 +8,21 @@ namespace BerlinClockTests
     [TestFixture]
     public class Tests
     {
+        private IEnumerable<ClockFormatEnum> ParseExpected(string expected)
+        {
+            int index = 0;
+            var retVal = ClockFormatEnum[expected.Length];
+            foreach (char part in expected)
+            {
+                switch (part)
+                {
+                    case 'O':
+                        
+                }
+            }
+        }
+        
+        
         [TestCase("01/01/2000 00:00:00", "OOOO")]
         [TestCase("01/01/2000 23:59:59", "YYYY")]
         [TestCase("01/01/2000 12:32:00", "YYOO")]

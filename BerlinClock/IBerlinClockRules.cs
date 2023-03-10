@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 namespace BerlinClock
 {
     public interface IBerlinClockRules
     {
-        string GetSingleMinutes(DateTime date);
+        IEnumerable<ClockFormatEnum> GetSingleMinutes(DateTime date);
         string GetFiveMinutes(DateTime date);
         string GetSingleHours(DateTime date);
         string GetFiveHourBlocks(DateTime date);

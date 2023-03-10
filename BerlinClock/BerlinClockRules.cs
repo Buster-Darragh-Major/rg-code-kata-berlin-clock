@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BerlinClock
@@ -6,10 +7,11 @@ namespace BerlinClock
     public class BerlinClockRules : IBerlinClockRules
     {
 
-        public string GetSingleMinutes(DateTime date)
+        public IEnumerable<ClockFormatEnum> GetSingleMinutes(DateTime date)
         {
             var numMinutes = date.Minute % 5;
-            return $"{new String('Y', numMinutes)}{new String('O', 4 - numMinutes)}";
+            return Enumerable.Repeat(ClockFormatEnum.Yellow, numMinutes)
+                .Concat(Enumerable.Repeat(ClockFormatEnum.Off, 4 - numMinutes));
         }
 
         public string GetFiveMinutes(DateTime date)
